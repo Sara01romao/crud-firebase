@@ -5,7 +5,8 @@ import "firebase/firestore";
 
 
 let firebaseConfig = {
- 
+
+    
 };
 
 // Initialize Firebase

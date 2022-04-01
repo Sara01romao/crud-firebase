@@ -1,6 +1,7 @@
 
 import './styles.css';
-import firebase from '../services/firebaseConnection';
+/* import firebase from '../services/firebaseConnection'; */
+import Lista from '../components/Lista';
 
 function App() {
 
@@ -10,6 +11,8 @@ function App() {
     <div className="App">
       
       index
+
+      <Lista></Lista>
     </div>
   );
 }
