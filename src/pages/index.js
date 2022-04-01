@@ -1,10 +1,15 @@
 
 import './styles.css';
+import firebase from '../services/firebaseConnection';
 
 function App() {
+
+
+
   return (
     <div className="App">
-     teste
+      
+      index
     </div>
   );
 }
