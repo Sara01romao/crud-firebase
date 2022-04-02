@@ -1,4 +1,43 @@
 
 .containerHome{
     margin: 50px;
+    border: 1px solid;
+    max-width: 700px;
+    margin: 50px auto 0px;
+    position: relative;
+  
 }
+
+.containerHome h1{
+  position: relative;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.containerHome h1::after{
+    content: url('../../assets/list-icon.svg');
+
+}
+
+.containerHome a{
+  position: absolute;
+  right: 0;
+  text-decoration: none;
+  background-color: black;
+  color: #fff;
+  width: 100px;
+  height: 30px;
+  font-size: 0.9rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.containerHome a:hover{
+  background-color: rgb(83, 83, 83);
+}
+

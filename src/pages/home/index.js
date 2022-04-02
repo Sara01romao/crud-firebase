@@ -1,5 +1,6 @@
 import React from 'react';
-import Lista from '../../components/Lista';
+import { Link } from 'react-router-dom';
+import Lista from '../../components/List';
 import styles from './styles.module.css'
 
 export default function Home() {
@@ -7,7 +8,8 @@ export default function Home() {
     <div className={`${styles.containerHome} container`}>
 
       <h1 className='title'>Lista</h1>
-
+      
+      <Link to="/cadastrar">+ Adicionar</Link>
       <Lista/>
     </div>
   )

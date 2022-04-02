@@ -37,10 +37,7 @@ export default function Lista() {
 
   return (
     <section className={styles.list}>
-      
 
-      
-      
        <table>
             <tr>
                 <th>Número caixa</th>
