@@ -1,7 +1,13 @@
-import React from 'react'
+import React from 'react';
+import Lista from '../../components/Lista'
 
 export default function Home() {
   return (
-    <div>Home</div>
+    <div>
+
+      <h1 className='title'>Lista</h1>
+
+      <Lista/>
+    </div>
   )
 }

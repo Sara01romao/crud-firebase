@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import firebase from '../../services/firebaseConnection';
+import styles from './styles.module.css'
 
 export default function Lista() {
     const [dataList, setDataList] = useState([]);
@@ -30,16 +31,37 @@ export default function Lista() {
         dataGetList()
     }, [])
 
-console.log(process.env.REACT_APP_API_KEY)
-  return (
-    <div>
-        <h1>Lista</h1>
-    
-        {console.table(dataList)}
-        {dataList.map((item) => <li>{item.caixa}{item.data}</li>)}
+   
 
-    
+  return (
+    <section className={styles.list}>
+      
+
+      
+      
+       <table>
+            <tr>
+                <th>Número caixa</th>
+                <th>Espécie</th>
+                <th>Data</th>
+            </tr>
+            
+            {dataList.map((item) => <tr key={item.id}>
+                <td className={styles.number}>{item.caixa}</td>
+                <td  className={styles.especie}>{item.especie}</td>
+                <td> {item.data}</td>
+                <td className={styles.options}> 
+                    <button>Editar</button>
+                    <button>Excluir</button>
+                
+                </td>
+               
+            </tr>)}
+            
+
+        </table>
+
         
-    </div>
+    </section>
   )
 }

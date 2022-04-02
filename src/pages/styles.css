@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 1px solid green;
+}
+
+.title{
+  color: rgb(63, 62, 62);
+  font-size: 1.5rem;
+  max-width: 100px;
+  position: relative;
+  display: flex;
+  align-items: center;
+ 
+}
+
+.title::after{
+    content: url('../assets/list-icon.svg');
+    position: absolute;
+    right: 0;
+    
+    
+}
