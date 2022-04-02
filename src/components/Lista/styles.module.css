@@ -9,19 +9,18 @@
   border: 1px solid red;
 }
 
-.list td{
+.list td {
   margin-bottom: 10px;
   text-align: center;
   font-size: 0.9rem;
+  height: 20px;
 }
 
-.list .especie{
+.list .especie {
   text-transform: capitalize;
-
-
 }
 
-.list .number{
+.list .number {
   width: 100px;
 }
 
@@ -29,12 +28,24 @@
   background-color: #f3f3f5;
 }
 
-
 .options {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2px;
 }
 
+.options button {
+  height: 30px;
+  border: none;
+  cursor: pointer;
+}
 
+.list tr:nth-child(odd) button {
+  background-color: #fff;
+}
 
-
+.options button:hover,
+.list tr:nth-child(odd) button:hover {
+  background-color: #e4e4e6;
+}

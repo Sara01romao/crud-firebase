@@ -1,9 +1,10 @@
 import React from 'react';
-import Lista from '../../components/Lista'
+import Lista from '../../components/Lista';
+import styles from './styles.module.css'
 
 export default function Home() {
   return (
-    <div>
+    <div className={`${styles.containerHome} container`}>
 
       <h1 className='title'>Lista</h1>
 

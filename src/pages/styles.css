@@ -14,8 +14,10 @@ body{
 .container{
     max-width: 1200px;
     margin: 0 auto;
-    border: 1px solid green;
+  
 }
+
+
 
 .title{
   color: rgb(63, 62, 62);
@@ -24,13 +26,7 @@ body{
   position: relative;
   display: flex;
   align-items: center;
+  margin: 15px auto;
  
 }
 
-.title::after{
-    content: url('../assets/list-icon.svg');
-    position: absolute;
-    right: 0;
-    
-    
-}

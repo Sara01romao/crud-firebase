@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import firebase from '../../services/firebaseConnection';
-import styles from './styles.module.css'
+import styles from './styles.module.css';
+import EditIcon  from '../../assets/edit-icon.svg';
+import RemoveIcon  from '../../assets/remove-icon.svg';
 
 export default function Lista() {
     const [dataList, setDataList] = useState([]);
@@ -44,6 +46,7 @@ export default function Lista() {
                 <th>Número caixa</th>
                 <th>Espécie</th>
                 <th>Data</th>
+                <th>Opções</th>
             </tr>
             
             {dataList.map((item) => <tr key={item.id}>
@@ -51,8 +54,8 @@ export default function Lista() {
                 <td  className={styles.especie}>{item.especie}</td>
                 <td> {item.data}</td>
                 <td className={styles.options}> 
-                    <button>Editar</button>
-                    <button>Excluir</button>
+                    <button><img src={EditIcon} alt="Editar"/></button>
+                    <button><img src={RemoveIcon} alt="Remover"/></button>
                 
                 </td>
                
