@@ -6,53 +6,46 @@ export default function Create() {
    const [caixa, setCaixa] = useState('');
    const [especie, setEspecie] = useState('');
    const [data, setData] = useState('');
-   const [item, setItem] = useState([])
+   const [msgError, setMsgError] = useState(null);
+  
    
     function handleSubmit(event){
       event.preventDefault();
 
-      /*   item.push([...item], caixa, especie, data);
-        console.table(item) */
-
-
-      /* async function CreatePost(){
-        await firebase.firestore().collection("caixas")
-        .doc(caixa)
-        .set({
-          especie: especie,
-          data: data
-        })
-        .then(()=>{
-          console.log("Okay")
-        })
-        .catch((error)=>{
-          console.log('erro', error)
-        })
-
-      }
-
-      CreatePost(); */
-
-
       async function CreatePost(){
+        try{
+          setMsgError(null);
+          let dados = firebase.firestore().collection("caixas").doc(caixa);
 
-       let dados = await firebase.firestore().collection("caixas").doc(caixa)
-        dados
-        .get()
-        .then((doc)=>{
-          if(!doc.exists){
-            dados
-            .set({
-              especie: especie,
-              data: data
-            })
-            console.log("Enviado")
-          }else{
-            console.log("erro")
-          }
-        })
-        
-       
+          await dados
+          .get()
+          .then((doc)=>{
+              if(!doc.exists){
+                dados
+                .set({
+                  especie: especie,
+                  data: data
+                })
+                console.log("Enviado")
+                setCaixa('');
+                setEspecie('')
+                setData('')
+               
+              }else{
+                setMsgError('Número da Caixa já existe')
+                console.log("erro")
+              }
+          })
+          .catch((error) =>{
+            console.log("Erro" + error)
+          })
+        }catch(e){
+          console.log("Erro" + e)
+
+        }finally{
+         
+        }
+      
       }
 
       CreatePost()
@@ -71,12 +64,14 @@ export default function Create() {
       <form onSubmit={handleSubmit}>
          <div>
             <label >Número da Caixa</label>
-            <input type="number" value={caixa} onChange={({target})=>setCaixa(target.value)}/>
+            <input type="number" value={caixa} onChange={({target})=>setCaixa(target.value)} required/>
+            {msgError && <p style={{color:'red'}}>{msgError}</p>}
          </div>
+
 
          <div>
             <label>Espécie</label>
-            <select value={especie} onChange={({target})=>setEspecie(target.value)}>
+            <select value={especie} onChange={({target})=>setEspecie(target.value)} required>
               <option value="" disabled>Selecione</option>
               <option value="Jataí">Jataí</option>
               <option value="Túbuna">Túbuna</option>
@@ -88,7 +83,7 @@ export default function Create() {
 
          <div>
             <label>Data</label>
-            <input type="date" value={data} onChange={({target})=> setData(target.value)}/>
+            <input type="date" value={data} onChange={({target})=> setData(target.value)} required/>
          </div>
 
          <button>Cadastrar</button>
