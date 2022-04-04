@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import firebase from '../../services/firebaseConnection';
+import styles from './styles.module.css'
 
 export default function Create() {
 
@@ -54,44 +55,50 @@ export default function Create() {
     }
 
 
- 
-    
-
   return (
-    <div className={` container`}>
+    <section className={`${styles.formSection}`}>
 
       <h1 className='title'>Cadastrar</h1>
       
-      <Link to='/'>Voltar</Link>
-      <form onSubmit={handleSubmit}>
-         <div>
-            <label >Número da Caixa</label>
-            <input type="number" value={caixa} onChange={({target})=>setCaixa(target.value)} required/>
-            {msgError && <p style={{color:'red'}}>{msgError}</p>}
-         </div>
+     <div className={`${styles.formContainer}`}>
+        <form onSubmit={handleSubmit} className={`${styles.form}`}>
+          
+          <div className={styles.inputs}>
+              <div>
+                  <label >Número da Caixa</label>
+                  <input type="number" value={caixa} onChange={({target})=>setCaixa(target.value)} required/>
+                  {msgError && <p style={{color:'red'}}>{msgError}</p>}
+              </div>
 
+              <div>
+                  <label>Data</label>
+                  <input type="date" value={data} onChange={({target})=> setData(target.value)} required/>
+              </div>
+          </div>
 
-         <div>
-            <label>Espécie</label>
-            <select value={especie} onChange={({target})=>setEspecie(target.value)} required>
-              <option value="" disabled>Selecione</option>
-              <option value="Jataí">Jataí</option>
-              <option value="Túbuna">Túbuna</option>
-              <option value="Iraí">Iraí</option>
-              <option value="Mirin">Mirim</option>
+          <div>
+              <label>Espécie</label>
+              <select value={especie} onChange={({target})=>setEspecie(target.value)} required>
+                <option value="" disabled>Selecione</option>
+                <option value="Jataí">Jataí</option>
+                <option value="Túbuna">Túbuna</option>
+                <option value="Iraí">Iraí</option>
+                <option value="Mirin">Mirim</option>
 
-            </select>
-         </div>
+              </select>
+            </div>
 
-         <div>
-            <label>Data</label>
-            <input type="date" value={data} onChange={({target})=> setData(target.value)} required/>
-         </div>
+          <button className='btn btn1'>Cadastrar</button>
+          
+        </form>
 
-         <button>Cadastrar</button>
-         
-      </form>
+          <button className={`${styles.button} btn btn2`}>
+              <Link to='/'>Cancelar</Link>
+          </button>
+        </div>
      
-    </div>
+    
+     
+    </section>
   )
 }
