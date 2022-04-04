@@ -1,18 +1,22 @@
 .list {
-  max-width: 700px;
+  max-width: 100%;
   margin: 50px auto 20px;
   display: flex;
   flex-direction: column;
   padding: 20px;
   height: 350px;
   overflow-y: auto;
-  border: 1px solid red;
+}
+
+.list th{
+  color: #303031;
+  font-weight: 400;
 }
 
 .list td {
   margin-bottom: 10px;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   height: 20px;
 }
 
