@@ -17,7 +17,6 @@ export default function Lista() {
                 snapshot.forEach((item)=>{
                     list.push({
                         id: item.id,
-                        caixa: item.data().caixa,
                         especie: item.data().especie,
                         data: item.data().data
                     })
@@ -47,7 +46,7 @@ export default function Lista() {
             </tr>
             
             {dataList.map((item) => <tr key={item.id}>
-                <td className={styles.number}>{item.caixa}</td>
+                <td className={styles.number}>{item.id}</td>
                 <td  className={styles.especie}>{item.especie}</td>
                 <td> {item.data}</td>
                 <td className={styles.options}> 
