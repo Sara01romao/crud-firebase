@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import firebase from '../../services/firebaseConnection';
 
 export default function Create() {
@@ -7,7 +8,7 @@ export default function Create() {
    const [especie, setEspecie] = useState('');
    const [data, setData] = useState('');
    const [msgError, setMsgError] = useState(null);
-  
+   const navigate = useNavigate();
    
     function handleSubmit(event){
       event.preventDefault();
@@ -30,7 +31,7 @@ export default function Create() {
                 setCaixa('');
                 setEspecie('')
                 setData('')
-               
+                navigate('/')
               }else{
                 setMsgError('Número da Caixa já existe')
                 console.log("erro")
@@ -61,6 +62,7 @@ export default function Create() {
 
       <h1 className='title'>Cadastrar</h1>
       
+      <Link to='/'>Voltar</Link>
       <form onSubmit={handleSubmit}>
          <div>
             <label >Número da Caixa</label>
