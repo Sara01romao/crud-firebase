@@ -3,18 +3,19 @@ import firebase from '../../services/firebaseConnection';
 import styles from './styles.module.css';
 import EditIcon  from '../../assets/edit-icon.svg';
 import RemoveIcon  from '../../assets/remove-icon.svg';
+import RemoveModal from '../Remove';
 
 export default function Lista() {
     const [dataList, setDataList] = useState([]);
+    const [item, setItem] = useState(null);
 
     useEffect(()=>{
         async function dataGetList(){
             await firebase.firestore().collection("caixas")
-            .get()
-            .then((snapshot)=>{
+            .onSnapshot((doc)=>{
                 let list = [];
 
-                snapshot.forEach((item)=>{
+                doc.forEach((item)=>{
                     list.push({
                         id: item.id,
                         especie: item.data().especie,
@@ -23,14 +24,20 @@ export default function Lista() {
                 
                     
                 })
-                console.log("ok")
-            setDataList(list)
-        
+              
+              setDataList(list)
             })
+           
         }
 
         dataGetList()
     }, [])
+
+   function handleRemove(id){
+    console.log(id)
+    setItem(id)
+   }
+
 
    
 
@@ -50,8 +57,8 @@ export default function Lista() {
                 <td  className={styles.especie}>{item.especie}</td>
                 <td> {item.data}</td>
                 <td className={styles.options}> 
-                    <button><img src={EditIcon} alt="Editar"/></button>
-                    <button><img src={RemoveIcon} alt="Remover"/></button>
+                    <button ><img src={EditIcon} alt="Editar"/></button>
+                    <button onClick={()=>handleRemove(item.id)}><img src={RemoveIcon} alt="Remover"/></button>
                 
                 </td>
                
@@ -59,8 +66,10 @@ export default function Lista() {
             
 
         </table>
-
-        
+        {item && <RemoveModal item={item} setValue={setItem} />  }
+      
     </section>
   )
 }
+
+
