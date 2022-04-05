@@ -58,7 +58,7 @@ export default function Lista() {
                 <td  className={styles.especie}>{item.especie}</td>
                 <td> {item.data}</td>
                 <td className={styles.options}> 
-                    <Link to="/editar"><img src={EditIcon} alt="Editar"/></Link>
+                    <Link to={`editar/${item.id}`}><img src={EditIcon} alt="Editar"/></Link>
                     <button onClick={()=>handleRemove(item.id)}><img src={RemoveIcon} alt="Remover"/></button>
                 
                 </td>

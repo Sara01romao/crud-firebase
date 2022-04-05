@@ -14,7 +14,7 @@ export default function RoutesApp() {
         <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/cadastrar' element={<Create/>}/>
-            <Route path='/editar' element={<Edit/>}/>
+            <Route path='/editar/:id' element={<Edit/>}/>
         </Routes>
     </BrowserRouter>
   )
