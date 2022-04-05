@@ -4,6 +4,7 @@ import styles from './styles.module.css';
 import EditIcon  from '../../assets/edit-icon.svg';
 import RemoveIcon  from '../../assets/remove-icon.svg';
 import RemoveModal from '../Remove';
+import { Link } from 'react-router-dom';
 
 export default function Lista() {
     const [dataList, setDataList] = useState([]);
@@ -57,7 +58,7 @@ export default function Lista() {
                 <td  className={styles.especie}>{item.especie}</td>
                 <td> {item.data}</td>
                 <td className={styles.options}> 
-                    <button ><img src={EditIcon} alt="Editar"/></button>
+                    <Link to="/editar"><img src={EditIcon} alt="Editar"/></Link>
                     <button onClick={()=>handleRemove(item.id)}><img src={RemoveIcon} alt="Remover"/></button>
                 
                 </td>
