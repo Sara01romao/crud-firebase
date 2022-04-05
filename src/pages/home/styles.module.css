@@ -1,13 +1,19 @@
 
 .containerHome{
-    margin: 50px;
-    max-width: 800px;
-    margin: 50px auto 0px;
-    position: relative;
-  
+    width: 100%;
+    height: 100vh;
+    margin: 0px auto 0px;
+    position: absolute;
+    top: 0;
 }
 
-.containerHome h1{
+.info {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.info h1{
+  margin-top: 120px;
   position: relative;  
   display: flex;
   align-items: center;
@@ -15,14 +21,12 @@
   gap: 10px;
 }
 
-.containerHome h1::after{
+.info h1::after{
     content: url('../../assets/list-icon.svg');
 
 }
 
-.containerHome a{
-  position: absolute;
-  right: 0;
+.info a{
   text-decoration: none;
   background-color: black;
   color: #fff;
@@ -35,9 +39,11 @@
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+  margin: 0 0 0 auto;
+
 }
 
-.containerHome a:hover{
+.info a:hover{
   background-color: rgb(83, 83, 83);
 }
 
