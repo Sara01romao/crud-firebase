@@ -46,25 +46,28 @@ export default function Lista() {
     <section className={styles.list}>
 
        <table>
-            <tr>
-                <th>Número caixa</th>
-                <th>Espécie</th>
-                <th>Data</th>
-                <th>Opções</th>
-            </tr>
-            
-            {dataList.map((item) => <tr key={item.id}>
-                <td className={styles.number}>{item.id}</td>
-                <td  className={styles.especie}>{item.especie}</td>
-                <td> {item.data}</td>
-                <td className={styles.options}> 
-                    <Link to={`editar/${item.id}`} className={styles.linkEdit}><img src={EditIcon} alt="Editar"/></Link>
-                    <button onClick={()=>handleRemove(item.id)}><img src={RemoveIcon} alt="Remover"/></button>
+           
+           <thead>
+                <tr>
+                    <th>Número caixa</th>
+                    <th>Espécie</th>
+                    <th>Data</th>
+                    <th>Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                {dataList.map((item) => <tr key={item.id}>
+                    <td className={styles.number}>{item.id}</td>
+                    <td  className={styles.especie}>{item.especie}</td>
+                    <td> {item.data}</td>
+                    <td className={styles.options}> 
+                        <Link to={`editar/${item.id}`} className={styles.linkEdit}><img src={EditIcon} alt="Editar"/></Link>
+                        <button onClick={()=>handleRemove(item.id)}><img src={RemoveIcon} alt="Remover"/></button>
+                    
+                    </td>
                 
-                </td>
-               
-            </tr>)}
-            
+                </tr>)}
+            </tbody>
 
         </table>
         {item && <RemoveModal item={item} setValue={setItem} />  }
