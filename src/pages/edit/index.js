@@ -7,14 +7,15 @@ export default function Edit() {
 
     const {id} = useParams();
     const [especie, setEspecie]= useState("");
-    const [data, setData] = useState("")
+    const [data, setData] = useState("");
+    
 
 
     useEffect(()=>{
-        //buscar item por id
+       
       async function handleBuscar(){
         await firebase.firestore().collection('caixas')
-        .doc(id)//id da doc
+        .doc(id)
         .get()
         .then((snapshot)=>{
           setEspecie(snapshot.data().especie)
@@ -25,10 +26,34 @@ export default function Edit() {
       handleBuscar()
     },[id])
 
+    function handleSubmit(event){
+      event.preventDefault();
+
+      async function editar(){
+
+        await firebase.firestore().collection('caixas')
+        .doc(id)
+        .update({
+          data: data,
+          especie:especie,
+        })
+        .then(()=>{
+          
+          console.log('editado')
+          
+          
+        })
+        
+        
+     }
+
+     editar()
+    }
+
       
 
 
-  
+  console.log(especie)
 
   return (
     <section className={`${styles.formSection}`}>
@@ -36,7 +61,7 @@ export default function Edit() {
       <h1 className='title'>Editar</h1>
 
       <div className={`${styles.formContainer}`}>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
       
             <div className={styles.inputs}>
                 <div>

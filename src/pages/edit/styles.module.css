@@ -50,8 +50,8 @@
 .inputId{
     cursor: not-allowed;
     background-color: rgb(216, 216, 216);
-    color: #000;
-    font-weight: 700;
+    color: rgb(56, 56, 56);
+    font-weight: 600;
 }
 
 .button{
