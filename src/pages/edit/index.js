@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import firebase from '../../services/firebaseConnection';
 import styles from './styles.module.css'
 
@@ -8,6 +8,7 @@ export default function Edit() {
     const {id} = useParams();
     const [especie, setEspecie]= useState("");
     const [data, setData] = useState("");
+    const navigate = useNavigate();
     
 
 
@@ -38,7 +39,7 @@ export default function Edit() {
           especie:especie,
         })
         .then(()=>{
-          
+          navigate('/')
           console.log('editado')
           
           
