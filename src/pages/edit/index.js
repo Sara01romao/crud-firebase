@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import firebase from '../../services/firebaseConnection';
+import styles from './styles.module.css'
 
 export default function Edit() {
 
@@ -27,40 +28,49 @@ export default function Edit() {
       
 
 
+  
 
   return (
-    <div>
+    <section className={`${styles.formSection}`}>
+
+      <h1 className='title'>Editar</h1>
+
+      <div className={`${styles.formContainer}`}>
+        <form className={styles.form}>
       
-      Edit {id}
+            <div className={styles.inputs}>
+                <div>
+                    <label>Número da caixa: </label>
+                    <input type="number" value={id} disabled className={styles.inputId}/>
+                </div>
 
-      <form >
-          
-          <div >
-             
-
-              <div>
-                  <label>Data</label>
-                  <input type="date" value={data} onChange={({target})=> setData(target.value)} required/>
-              </div>
-          </div>
-
-          <div>
-              <label>Espécie</label>
-              <select value={especie} onChange={({target})=>setEspecie(target.value)} required>
-                <option value="" disabled>Selecione</option>
-                <option value="Jataí">Jataí</option>
-                <option value="Túbuna">Túbuna</option>
-                <option value="Iraí">Iraí</option>
-                <option value="Mirin">Mirim</option>
-
-              </select>
+                <div>
+                    <label>Data</label>
+                    <input type="date" value={data} onChange={({target})=> setData(target.value)} required/>
+                </div>
             </div>
-{/* 
-          <button className='btn btn1'>Cadastrar</button> */}
-          
-        </form>
-    
 
-    </div>
+            <div>
+                <label>Espécie</label>
+                <select value={especie} onChange={({target})=>setEspecie(target.value)} required>
+                  <option value="" disabled>Selecione</option>
+                  <option value="Jataí">Jataí</option>
+                  <option value="Túbuna">Túbuna</option>
+                  <option value="Iraí">Iraí</option>
+                  <option value="Mirin">Mirim</option>
+
+                </select>
+              </div>
+
+              <button className='btn btn1'>Editar</button>
+          
+          </form>
+
+          <button className={`${styles.button} linkBtn`}>
+              <Link to='/'>Cancelar</Link>
+          </button>
+        </div>
+
+    </section>
   )
 }
