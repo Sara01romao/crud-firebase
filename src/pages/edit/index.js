@@ -40,19 +40,19 @@ export default function Edit() {
       
             <div className={styles.inputs}>
                 <div>
-                    <label>Número da caixa: </label>
-                    <input type="number" value={id} disabled className={styles.inputId}/>
+                    <label htmlFor='caixa'>Número da caixa: </label>
+                    <input type="number" id="caixa" value={id} disabled className={styles.inputId}/>
                 </div>
 
                 <div>
-                    <label>Data</label>
-                    <input type="date" value={data} onChange={({target})=> setData(target.value)} required/>
+                    <label htmlFor='data'>Data</label>
+                    <input type="date" id="data" value={data} onChange={({target})=> setData(target.value)} required/>
                 </div>
             </div>
 
             <div>
-                <label>Espécie</label>
-                <select value={especie} onChange={({target})=>setEspecie(target.value)} required>
+                <label htmlFor='especie'>Espécie</label>
+                <select value={especie} id="especie" onChange={({target})=>setEspecie(target.value)} required>
                   <option value="" disabled>Selecione</option>
                   <option value="Jataí">Jataí</option>
                   <option value="Túbuna">Túbuna</option>

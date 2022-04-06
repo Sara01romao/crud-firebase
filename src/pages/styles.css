@@ -54,13 +54,14 @@ select{
     background: #fff;
 }
 
-.btn{
+.btn, button.linkBtn{
     height: 35px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
     border: none;
     border-radius: 5px;
+    opacity: 0.9;
     transition: 0.5s ease-in;
 }
 
@@ -70,18 +71,14 @@ select{
 
 }
 
-.btn.btn1:hover{
-    background: #000;
+button.linkBtn{
+    background-color: rgb(235, 235, 235);
 }
 
-.btn.btn2{
-    border: 2px solid rgb(255, 230, 0);
-    background: #fff;
-    font-weight: bold;
-    
+
+.btn.btn1:hover,  button.linkBtn:hover {
+    opacity: 1;
+    border: 1px solid;
 }
 
-.btn.btn2:hover{
-    background: rgb(255, 253, 235);
-}
 

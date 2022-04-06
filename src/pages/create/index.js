@@ -12,45 +12,45 @@ export default function Create() {
    const navigate = useNavigate();
    
     function handleSubmit(event){
-      event.preventDefault();
+        event.preventDefault();
+    
+        async function CreatePost(){
+          try{
+            setMsgError(null);
+            let dados = firebase.firestore().collection("caixas").doc(caixa);
 
-      async function CreatePost(){
-        try{
-          setMsgError(null);
-          let dados = firebase.firestore().collection("caixas").doc(caixa);
+            await dados
+            .get()
+            .then((doc)=>{
+                if(!doc.exists){
+                  dados
+                  .set({
+                    especie: especie,
+                    data: data
+                  })
+                  console.log("Enviado")
+                  setCaixa('');
+                  setEspecie('')
+                  setData('')
+                  navigate('/')
+                }else{
+                  setMsgError('Número da Caixa já existe')
+                  console.log("erro")
+                }
+            })
+            .catch((error) =>{
+              console.log("Erro" + error)
+            })
+          }catch(e){
+            console.log("Erro" + e)
 
-          await dados
-          .get()
-          .then((doc)=>{
-              if(!doc.exists){
-                dados
-                .set({
-                  especie: especie,
-                  data: data
-                })
-                console.log("Enviado")
-                setCaixa('');
-                setEspecie('')
-                setData('')
-                navigate('/')
-              }else{
-                setMsgError('Número da Caixa já existe')
-                console.log("erro")
-              }
-          })
-          .catch((error) =>{
-            console.log("Erro" + error)
-          })
-        }catch(e){
-          console.log("Erro" + e)
-
-        }finally{
-         
+          }finally{
+          
+          }
+        
         }
-      
-      }
 
-      CreatePost()
+        CreatePost()
       
     }
 
@@ -65,20 +65,20 @@ export default function Create() {
           
           <div className={styles.inputs}>
               <div>
-                  <label >Número da Caixa</label>
-                  <input type="number" value={caixa} onChange={({target})=>setCaixa(target.value)} required/>
+                  <label htmlFor='caixa'>Número da Caixa</label>
+                  <input type="number" id="caixa" value={caixa} min="1" onChange={({target})=>setCaixa(target.value)} required/>
                   {msgError && <p style={{color:'red'}}>{msgError}</p>}
               </div>
 
               <div>
-                  <label>Data</label>
-                  <input type="date" value={data} onChange={({target})=> setData(target.value)} required/>
+                  <label htmlFor='data'>Data</label>
+                  <input type="date" id="data" value={data} onChange={({target})=> setData(target.value)} required/>
               </div>
           </div>
 
           <div>
-              <label>Espécie</label>
-              <select value={especie} onChange={({target})=>setEspecie(target.value)} required>
+              <label htmlFor='especie'>Espécie</label>
+              <select value={especie} id="especie" onChange={({target})=>setEspecie(target.value)} required>
                 <option value="" disabled>Selecione</option>
                 <option value="Jataí">Jataí</option>
                 <option value="Túbuna">Túbuna</option>
@@ -92,7 +92,7 @@ export default function Create() {
           
         </form>
 
-          <button className={`${styles.button} btn btn2`}>
+          <button className={`${styles.button} linkBtn`}>
               <Link to='/'>Cancelar</Link>
           </button>
         </div>

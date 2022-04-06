@@ -58,7 +58,7 @@
 }
 
 .options button:hover,
- a:hover,
+.linkEdit:hover,
 .list tr:nth-child(odd) button:hover{
   background-color: #e4e4e6;
 }
