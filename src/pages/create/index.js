@@ -85,7 +85,7 @@ export default function Create() {
                 <option value="Jataí">Jataí</option>
                 <option value="Túbuna">Túbuna</option>
                 <option value="Iraí">Iraí</option>
-                <option value="Mirin">Mirim</option>
+                
 
               </select>
             </div>

@@ -29,9 +29,18 @@
   width: 100px;
 }
 
+.list th{
+  padding: 5px;
+  background-color: #f3f3f5;
+  align-items: center;
+  justify-content: center;
+}
+
 .list tr:nth-child(even) {
   background-color: #f3f3f5;
 }
+
+
 
 .options {
   display: grid;

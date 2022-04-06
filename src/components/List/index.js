@@ -15,8 +15,32 @@ export default function Lista() {
             await firebase.firestore().collection("caixas")
             .onSnapshot((doc)=>{
                 let list = [];
+               
+                doc.forEach((item)=>{       
+                   
+                    list.push({
+                        id: item.id,
+                        especie: item.data().especie,
+                        data: item.data().data
+                    })
+                })
+              
+              setDataList(list)
+            })
+           
+        }
 
-                doc.forEach((item)=>{
+        dataGetList()
+    }, [])
+
+
+     useEffect(()=>{
+        async function dataGetList(){
+            await firebase.firestore().collection("caixas")
+            .onSnapshot((doc)=>{
+                let list = [];
+
+                doc.forEach((item)=>{        
                     list.push({
                         id: item.id,
                         especie: item.data().especie,
@@ -34,6 +58,13 @@ export default function Lista() {
         dataGetList()
     }, [])
 
+
+
+
+
+
+
+
    function handleRemove(id){
     console.log(id)
     setItem(id)
@@ -44,7 +75,7 @@ export default function Lista() {
 
   return (
     <section className={styles.list}>
-
+     
        <table>
            
            <thead>
@@ -59,11 +90,11 @@ export default function Lista() {
                 {dataList.map((item) => <tr key={item.id}>
                     <td className={styles.number}>{item.id}</td>
                     <td  className={styles.especie}>{item.especie}</td>
-                    <td> {item.data}</td>
+                    <td> {item.data.split('-').reverse().join('/')}</td>
                     <td className={styles.options}> 
                         <Link to={`editar/${item.id}`} className={styles.linkEdit}><img src={EditIcon} alt="Editar"/></Link>
                         <button onClick={()=>handleRemove(item.id)}><img src={RemoveIcon} alt="Remover"/></button>
-                    
+                       
                     </td>
                 
                 </tr>)}

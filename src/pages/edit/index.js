@@ -51,10 +51,7 @@ export default function Edit() {
      editar()
     }
 
-      
-
-
-  console.log(especie)
+    
 
   return (
     <section className={`${styles.formSection}`}>
