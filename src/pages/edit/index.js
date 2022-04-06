@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import firebase from '../../services/firebaseConnection';
 import styles from './styles.module.css'
 
@@ -39,9 +40,8 @@ export default function Edit() {
           especie:especie,
         })
         .then(()=>{
+          toast.success("Editado com sucesso");
           navigate('/')
-          console.log('editado')
-          
           
         })
         

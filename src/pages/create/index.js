@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import firebase from '../../services/firebaseConnection';
 import styles from './styles.module.css'
 
@@ -28,14 +29,15 @@ export default function Create() {
                     especie: especie,
                     data: data
                   })
-                  console.log("Enviado")
+                  
                   setCaixa('');
                   setEspecie('')
                   setData('')
+                  toast.success("Adicionado com sucesso");
                   navigate('/')
                 }else{
-                  setMsgError('Número da Caixa já existe')
-                  console.log("erro")
+                  setMsgError('Número já existe')
+                  toast.error("Número da Caixa já existe");
                 }
             })
             .catch((error) =>{
@@ -67,7 +69,7 @@ export default function Create() {
               <div>
                   <label htmlFor='caixa'>Número da Caixa</label>
                   <input type="number" id="caixa" value={caixa} min="1" onChange={({target})=>setCaixa(target.value)} required/>
-                  {msgError && <p style={{color:'red'}}>{msgError}</p>}
+                  {msgError && <p style={{color:'red', marginTop:'5px'}}>{msgError}</p>}
               </div>
 
               <div>

@@ -1,6 +1,9 @@
 
 import './styles.css';
-/* import firebase from '../services/firebaseConnection'; */
+
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 import RoutesApp from '../routes';
 
@@ -12,7 +15,7 @@ function App() {
     <div className="App">
     <RoutesApp/>
       
-  
+     <ToastContainer autoClose={1000}/>
     </div>
   );
 }

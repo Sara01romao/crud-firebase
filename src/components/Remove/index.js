@@ -2,6 +2,7 @@ import React from 'react'
 import firebase from '../../services/firebaseConnection';
 import styles from './styles.module.css';
 import Trash from '../../assets/trash.svg'
+import { toast } from 'react-toastify';
 
 export default function RemoveModal({item, setValue}) {
 
@@ -11,8 +12,8 @@ export default function RemoveModal({item, setValue}) {
             .doc(id)
             .delete()
             .then(()=>{
-            console.log('excluido')
-            setValue(null)
+              toast.success("Excluído com sucesso");
+              setValue(null)
             })
         
         }
