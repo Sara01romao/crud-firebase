@@ -10,7 +10,7 @@ export default function Home() {
       <div className={styles.info}>
         <h1 className='title'>Lista</h1>
         
-        <Link to="/cadastrar">+ Adicionar</Link>
+        <Link to="/cadastrar" className={styles.add}>+ Adicionar</Link>
         <Lista/>
       </div>
 

@@ -40,7 +40,14 @@
   gap: 2px;
 }
 
-.options button {
+.options a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.options button, .options a {
   height: 30px;
   border: none;
   cursor: pointer;
@@ -51,6 +58,7 @@
 }
 
 .options button:hover,
-.list tr:nth-child(odd) button:hover {
+ a:hover,
+.list tr:nth-child(odd) button:hover{
   background-color: #e4e4e6;
 }
