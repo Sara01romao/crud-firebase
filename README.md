@@ -35,7 +35,7 @@ Firebase - Firestore
 - [x] Page Cadastro
 - [x] Page Editar
 - [x] Modal Remove
-- [ ] Filtros
+
 
 
 
